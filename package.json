@@ -1,18 +1,15 @@
 {
-  "name": "gulp",
+  "name": "css-exercicio-bem",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp",
+    "sass": "sass",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "gulp": "^5.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "sass": "^1.79.4"
+    "sass": "^1.80.3"
   }
 }
