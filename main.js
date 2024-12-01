@@ -1,20 +1,42 @@
-function Livro(titulo, editora, autor) {
+function Livro(titulo, autor) {
     this.titulo = titulo;
-    this.editora = editora;
     this.autor = autor;
-
+    
     this.dizLivro = function() {
-        console.log('Livro: ' + this.titulo);    
-    }      
+        console.log('Livro: ' + this.titulo); 
+        console.log('Autor: ' + this.autor);   
+    } 
+    
+    
 }
 
-function Venda(titulo, editora, autor, formato, preco, tipoDeVenda, formaDePagamento) {
-    this.formato = formato
+function Editora(titulo, autor, emissao) {
+    this.emissao = emissao;
+
+    Livro.call(this, titulo, autor);
+
+    this.dizEditora = function() {
+        console.log('Editora: ' + this.emissao);
+    }
+    
+}
+
+function Formato(titulo, autor, emissao, formatoDoLivro) {
+    this.formatoDoLivro = formatoDoLivro;
+
+    Editora.call(this, titulo, autor, emissao);
+
+    this.dizFormato = function() {
+        console.log('No formato: ' + this.formatoDoLivro);
+    }
+}
+
+function Venda(titulo, autor, editora, emissao, preco, tipoDeVenda, formaDePagamento) {
     this.tipoDeVenda = tipoDeVenda;
     this.formaDePagamento = formaDePagamento;
     let _preco = preco;
 
-    Livro.call(this, titulo);
+    Formato.call(this, titulo, autor, editora, emissao);
 
     this.getPreco = function() {
         return `Valor final: R$${_preco}`;
@@ -34,16 +56,16 @@ function Venda(titulo, editora, autor, formato, preco, tipoDeVenda, formaDePagam
     }
 
     this.dizVenda = function() {
-        console.log('Formato: ' + this.formato);
+        console.log('Formato: ' + this.emissao);
         console.log('Venda: ' + this.tipoDeVenda);
         console.log('Pagamento tipo: ' + this.formaDePagamento);
     }
 
 }
 
-const venda1= new Venda("Poemas de temporal e mansidão", "Planeta", "Ryane Leão", "Físico", 30, "Presencial", "Débito");
-const venda2 = new Venda("Como matei minha querida família", "Darkside", "Bella Mackie", "Digital", 40, "On-line", "Crédito");
-const venda3 = new Venda("Pequena coreografia do adeus", "Companhia das Letras", "Aline Bei", "Físico", 60, "On-line", "Débito");
+const venda1= new Venda("Poemas de temporal e mansidão",  "Ryane Leão", "Planeta", "Físico", 30, "Presencial", "Débito");
+const venda2 = new Venda("Como matei minha querida família", "Bella Mackie", "Darkside", "Digital", 40, "On-line", "Crédito");
+const venda3 = new Venda("Pequena coreografia do adeus", "Aline Bei", "Companhia das Letras", "Físico", 60, "On-line", "Débito");
 
 
 venda1.dizLivro();
